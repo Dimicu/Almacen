@@ -53,19 +53,44 @@ function agregarArt() {
     let articulo = document.getElementById("articulo").value;
     let descripcion = document.getElementById("descripcion").value;
     let numeroUd = document.getElementById("numeroUnidades").value;
-    let precioUd = document.getElementById("precioUnidades").value;
-    let fecha = document.getElementById("fechaArticulo").value;
+    let precioUd = document.getElementById("precioUnidades").value ;
+    /*Parseo de float del precio y limitacion de dos decimales, ademas de añadir el simbolo euro */
 
-    let nuevoArticulo = new Articulo(codigo, articulo, descripcion, numeroUd, precioUd, fecha);
+    let precioDecimal= parseFloat(precioUd).toFixed(2);
+
+
+
+    let tiempo = document.getElementById("fechaArticulo").value;
+    //Sacamos los dias meses y años segun nos lo metan DD-MM-AAAA , o DD-MM-AA
+    let periodos = tiempo.split("-");
+    let dias = parseInt(periodos[0]);
+
+    let meses = parseInt(periodos[1]);
+    let anos = parseInt(periodos[2]);
+    let fecha = new Date(anos, meses - 1, dias - 1)
+    //Añadimos options para toLocaleSateString ya que sino nos saca un formato de fecha que no queremos
+    let options = {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric"
+    }
+    let fechaSimple = fecha.toLocaleDateString("es-ES", options);
+    //Añadimos la regExp para que ponga - y no / en la tabla de fecha.
+    let regExp = /\//g;
+    let fechaGuiones = fechaSimple.replace(regExp, "-");
+
+    //Creamos el objeto con sus propiedades
+    let nuevoArticulo = new Articulo(codigo, articulo, descripcion, numeroUd, precioDecimal, fechaGuiones);
     console.log(nuevoArticulo);
     arrayArticulos.push(nuevoArticulo);
 }
 
 function consultarArt() {
     let tabla = document.getElementById("tabla");
-    let fila = "";
-    let celda = "";
+
     if (arrayArticulos.length !== 0) {
+        let fila = "";
+        let celda = "";
         arrayArticulos.forEach(element => {
             fila = tabla.insertRow(-1);
             let valoresElemento = Object.values(element);
