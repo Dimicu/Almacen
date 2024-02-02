@@ -10,11 +10,11 @@
 <body>
 	<h1>Artículos en almacén</h1>
 	<div id="formulario">
-		Artículo:<input type="text" value="" size=6 id="articulo"><br>
-		Descripción:<input type="text" value="" size=20 id="descripcion"><br>
-		Num unidades:<input type="text" value="" size=4 id="numeroUnidades"><br>
+		Artículo:<input type="text" value="" pattern="[a-zA-Z]*" required size=6 id="articulo"><br>
+		Descripción:<input type="text" value="" pattern="[a-zA-Z0-9 ]*" size=20 id="descripcion"><br>
+		Num unidades:<input type="text"required max="10000" min="0" value="" size=4 id="numeroUnidades"><br>
 		Precio por unidad: <input type="text" value="" size=4 id="precioUnidades"><br>
-		Fecha entrada:<input type="text" value="" size=8 id="fechaArticulo"><br>
+		Fecha entrada:<input type="text"required value="" size=8 id="fechaArticulo"><br>
 		<input type='button' id="btn_anadir" value="Añadir artículo" onclick="agregarArt()">
 		<input type='button' id="btn_listar" value="Consultar" onclick="consultarArt()">
 		<input type='button' id="btn_fecha" value="Listar articulos posteriores a fecha">

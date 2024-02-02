@@ -73,9 +73,6 @@ function consultarArt() {
                 celda = fila.insertCell(-1);
                 celda.innerHTML = valoresElemento[i];
             }
-
-
-
         });
     } else {
         document.getElementById("mensaje").innerHTML = "La lista de articulos esta vacia";
