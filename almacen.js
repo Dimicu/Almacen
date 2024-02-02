@@ -60,3 +60,24 @@ function agregarArt() {
     console.log(nuevoArticulo);
     arrayArticulos.push(nuevoArticulo);
 }
+
+function consultarArt() {
+    let tabla = document.getElementById("tabla");
+    let fila = "";
+    let celda = "";
+    if (arrayArticulos.length !== 0) {
+        arrayArticulos.forEach(element => {
+            fila = tabla.insertRow(-1);
+            let valoresElemento = Object.values(element);
+            for (let i = 0; i < valoresElemento.length; i++) {
+                celda = fila.insertCell(-1);
+                celda.innerHTML = valoresElemento[i];
+            }
+
+
+
+        });
+    } else {
+        document.getElementById("mensaje").innerHTML = "La lista de articulos esta vacia";
+    }
+}
