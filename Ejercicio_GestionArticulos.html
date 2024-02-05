@@ -10,15 +10,15 @@
 <body>
 	<h1>Artículos en almacén</h1>
 	<div id="formulario">
-		Artículo:<input type="text" value="Clavo" pattern="[a-zA-Z]*" required size=6 id="articulo"><br>
+		Artículo:<input type="text" value="Clavo" pattern="[a-zA-Z]*" size=6 id="articulo" required><br>
 		Descripción:<input type="text" value="15cm acero" pattern="[a-zA-Z0-9 ]*" size=20 id="descripcion"><br>
-		Num unidades:<input type="text"required max="10000" min="0" value="100" size=4 id="numeroUnidades"><br>
+		Num unidades:<input type="text" max="10000" min="0" value="100" size=4 id="numeroUnidades" required><br>
 		Precio por unidad: <input type="text" value="0.5" size=4 id="precioUnidades"><br>
-		Fecha entrada:<input type="text"required value="15-12-12" size=8 id="fechaArticulo"><br>
+		Fecha entrada:<input type="text" value="15-12-2010" size=8 id="fechaArticulo" required><br>
 		<input type='button' id="btn_anadir" value="Añadir artículo" onclick="agregarArt()">
 		<input type='button' id="btn_listar" value="Consultar" onclick="consultarArt()">
-		<input type='button' id="btn_fecha" value="Listar articulos posteriores a fecha">
-		<input type='button' id="btn_importe_total" value="calcular importe total articulos">
+		<input type='button' id="btn_fecha" value="Listar articulos posteriores a fecha" onclick="listarPorFecha()">
+		<input type='button' id="btn_importe_total" value="calcular importe total articulos" onclick="calcularValor()">
 	</div>
 	<div id="listado">
 		<h1>Listado de artículos en el almacen</h1>
@@ -43,6 +43,9 @@
 	</div>
 	<hr>
 	<p id='mensaje'>Mensajes informativos</p>
+	<table border="1" id="tablaFecha" ></table>
+	<table border="1" id="tablaValor" ></table>
+	<p id="valor">Calculo del valor del inventario</p>
 
 </body>
 <script src="almacen.js"></script>
